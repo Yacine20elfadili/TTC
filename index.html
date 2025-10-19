@@ -15,10 +15,16 @@
             <div class="logo">
                 <img src="images/logo.png" alt="TTC Logo">
             </div>
-            <ul>
+            <!-- Add id="mobile-menu" here -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <!-- Add id="nav-menu" here -->
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#Gallery">Gallary</a></li>
+                <li><a href="#Membership">Membership</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -57,7 +63,7 @@
             </div>
             </div>
         </section>
-        <section id="membership">
+        <section id="Membership">
             <h2>Membership Plans</h2>
             <div class="pricing-cards">
                 <div class="price-card">
@@ -103,9 +109,9 @@
                 <p><i class="fas fa-phone"></i> Phone: +212 6 12 34 56 78</p>
                 <p><i class="fas fa-location-dot"></i> Address: Avenue Mohammed V, Taroudant 83000, Morocco</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/TaroudantTennisClub/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/TaroudantTennisClub/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/TaroudantTennisClub/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/TaroudantTennisClub/" target="_blank"><i id="facebook" class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/TaroudantTennisClub/" target="_blank"><i id="instagram" class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/TaroudantTennisClub/" target="_blank"><i id="youtube" class="fab fa-youtube"></i></a>
                 </div>
                 <div class="newsletter">
                     <h3>Subscribe to Our Newsletter</h3>
@@ -131,5 +137,38 @@
     <footer>
         <p>&copy; 2024 TTC. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                // Change icon based on menu state
+                const icon = mobileMenu.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when a link is clicked
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
